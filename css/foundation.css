@@ -2130,7 +2130,6 @@ form.custom {
         display: inline-block;
         color: #333333;
         font-size: 0.875em;
-        white-space: nowrap;
         width: 100%; }
       .section-container section .title:hover,
       .section-container .section .title:hover, .section-container.auto section .title:hover,

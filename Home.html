@@ -114,11 +114,13 @@
             <a href="#" class="button prefix" id = "valuesubmit" onclick="addtolist(address.value)">Add</a>
           </div>
         </div>
+        <!--
         <div class="placeselected" id="addingcities">
           <ul class="side-nav">
             <li>Destinations Selected:</li>
           </ul>
         </div>
+      -->
       </div>
     </section>
 
@@ -290,7 +292,7 @@ google.maps.event.addDomListener(window, 'load', initMap);
         		position: getlatlng(lat, lng),
         		map: map,
         		id: 'marker_' + markerid,
-        		//icon: 'img/marker.png'
+        		icon: 'img/plantrip.png'
         	});
         	markers[markerid] = marker;
         	markerevent(marker);

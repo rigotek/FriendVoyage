@@ -50,7 +50,8 @@
     width: 75px;
   }
   #givegrade{
-    margin-left: 27px
+    margin-left: 27px;
+    height:30px;
   }
   .pictureselect p{
     font:12px;
@@ -62,6 +63,7 @@
   .gradeselect{
     float:left;
     padding:10px;
+    width:80px;
   }
   #activities li{
     text-align: center;
@@ -78,7 +80,8 @@
     font-size: 10px;
     list-style: none;
   }
-  .pictureselect:hover{
+  .pictureselect:hover,
+  .gradeselect:hover{
     opacity: .25;
   }
   #recommendationtext{
@@ -262,25 +265,22 @@
               <div id="givegrade">
                 <div class="gradeselect">
                   <label for="good">
-                    <img src="img/nightlife.png" title="good"/>
+                    <img src="img/good.png" title="good"/>
                   </label>
-                  <p>Great</p>
                   <input name="good" type="radio" id="good" value="good">
                 </div> 
 
                 <div class="gradeselect">
                   <label for="neutral">
-                    <img src="img/nightlife.png" title="neutral"/>
+                    <img src="img/neutral.png" title="neutral"/>
                   </label>
-                  <p>Neutral</p>
                   <input name="neutral" type="radio" id="neutral" value="neutral">
                 </div> 
 
                 <div class="gradeselect">
                   <label for="bad">
-                    <img src="img/nightlife.png" title="bad"/>
+                    <img src="img/bad.png" title="bad"/>
                   </label>
-                  <p>Bad</p>
                   <input name="bad" type="radio" id="bad" value="bad">
                 </div>
 
@@ -304,11 +304,12 @@
 
       <section class="section" id="step4">
         <p class="title" data-section-title>
-          <a href="#">I am done with my recommendations</a>
+          <a href="#">Submit recommendations</a>
         </p>
         <div class="content" data-section-content>
           <div class="row">
-            <a href='#' class="button small-12 columns" type="button" id="address">Submit Recommendations</a>
+            <a href='#' class="button small-5 columns" type="button" id="address" onclick="startoveraccordion()">Add More</a>
+            <a href='#' class="button small-5 columns" type="button" id="address">I'm Done</a>
           </div>
         </div>
       </section>
@@ -341,12 +342,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-  <script src="js/jquery.share.js"></script>     
-
-  <!-- scripts to make the popup guide work-->
-  <script type="text/javascript">
-  $(document).foundation('joyride', 'start');
-  </script>
+  <script src="js/jquery.share.js"></script>    
 
   <script type="text/javascript">			
 
@@ -442,6 +438,14 @@
         $(this).find('label').css('opacity', '1');
       });
 
+      //this is an icon selector for the drop pins
+      $("div.gradeselect").click(function(){
+        //console.log($(this));
+        var checked=$(this).find('input:radio').attr('checked', true);
+        $(this).parent('div#givegrade').find('label').css('opacity', '.25');
+        $(this).find('label').css('opacity', '1');
+      });
+
       //this loads the map onto the screen
       google.maps.event.addDomListener(window, 'load', initMap); 
       
@@ -517,10 +521,10 @@
       var addtolist = function(val){
     	   //$("#addingcities ul").append('<li><a href="#">'+val+'</a></li>');
     	   $("#valuesubmit").val("");
-      }
-      </script>
+       }
+       </script>
 
-      <script>
+       <script>
   //must add in order for foundation to work
   document.write('<script src=' +
    ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
@@ -545,7 +549,19 @@
   $(document).foundation();
   </script>
 
+  <!-- scripts to make the popup guide work-->
+  <script type="text/javascript">
+  $(document).foundation('joyride', 'start');
+  </script>
 
+  <!-- script to make the add more button work-->
+  <script>
+  var startoveraccordion=function(){
+    $('.section').removeClass('active');
+    $('#step1').addClass('active');
+    //$(this).addClass('showhidenew');
+  }
+  </script>
   <div id="linkmodal" class="reveal-modal">
     <h2>Congratulations! Here is the link for your map. Share it with your friends!</h2>
     <input type="text" id="linktomap" value="file:///C:/Users/Rodrigo/SkyDrive/Code/FriendVoyage/recommendation.html" onclick="window.open('Recommendations.html', '_self')"/>

@@ -122,6 +122,13 @@
   #finditheader{
     margin-top: -10px;
   }
+  #decorationline{
+    height:5px;
+    width:100%;
+    background-color:black;
+    margin-top:45px;
+    position:absolute;
+  }
   </style>
 
 </head>
@@ -130,9 +137,31 @@
 
   <!-- header included from header-->
   <div id="header">
-    <img src= "img/friendvoyage.png" style="
-    margin-top: 5px;"></img>
+    <div id="decorationline"></div>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <img src= "img/friendvoyage.png" style="
+          margin-top: 2px;"></img>        
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="#">About Us</a></li>
+          <li class="divider"></li>
+          <li class="active has-dropdown"><a href="#">Settings</a>
+            <ul class="dropdown">
+              <li><a href="#">Login/Logout</a></li>
+              <li><a href="#">Preferences</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
   </div>
+
 
   <!-- body includes map-->
   <div id="body">
@@ -143,7 +172,7 @@
 
     <div id="selections" class="section-container" data-section="accordion">
 
-      <section class="section active">
+      <section class="section active" id="step1">
         <p class="title" data-section-title>
           <a href="#">
             Select a category
@@ -220,7 +249,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="step2">
         <p class="title" data-section-title>
           <a href="#">Tell us the juicy details
           </a>
@@ -261,7 +290,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="step3">
         <p class="title" data-section-title>
           <a href="#">Find it on the map</a>
         </p>
@@ -273,7 +302,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="step4">
         <p class="title" data-section-title>
           <a href="#">I am done with my recommendations</a>
         </p>
@@ -287,6 +316,21 @@
     </div><!--selections-->
   </div><!--filter selections-->
 
+  <ol class="joyride-list" data-joyride>
+    <li data-id="step1" data-text="Next" data-options="tipLocation:left">
+      <p>Select an icon that best represents what you're recommending</p>
+    </li>
+    <li data-id="step2" data-text="Next" data-options="tipLocation:left">
+      <p>Why should your friend visit this place?</p>
+    </li>
+    <li data-id="step3" data-text="Next" data-options="tipLocation:left">
+      <p>Find it using the textbox</p>
+    </li>
+    <li data-id="step4" data-text="Next" data-options="tipLocation:left">
+      <p>Wanna keep going? Hit yes, if you're done, hit complete</p>
+    </li>
+  </ol>
+
   <div id="footer">
   </div>
 
@@ -297,7 +341,13 @@
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-  <script src="js/jquery.share.js"></script>                     
+  <script src="js/jquery.share.js"></script>     
+
+  <!-- scripts to make the popup guide work-->
+  <script type="text/javascript">
+  $(document).foundation('joyride', 'start');
+  </script>
+
   <script type="text/javascript">			
 
     //initializes sharing on facebook

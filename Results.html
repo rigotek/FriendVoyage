@@ -160,328 +160,355 @@
         height:85px;
         margin-top: 20px;
     }
+    #decorationline{
+        height:5px;
+        width:100%;
+        background-color:black;
+        margin-top:45px;
+        position:absolute;
+    }
     </style>
 </head>
 
 <body onload="initMap()">
-    <div id="header">
-        <img src= "img/friendvoyage.png" style="
-        margin-top: 5px;"></img>
-    </div>
+  <div id="header">
+    <div id="decorationline"></div>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <img src= "img/friendvoyage.png" style="
+          margin-top: 2px;"></img>        
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li><a href="#">About Us</a></li>
+      <li class="divider"></li>
+      <li class="active has-dropdown"><a href="#">Settings</a>
+        <ul class="dropdown">
+          <li><a href="#">Login/Logout</a></li>
+          <li><a href="#">Preferences</a></li>
+      </ul>
+  </li>
+</ul>
+</section>
+</nav>
+</div>
 
-    <div id="body">
-        <div id="map_canvas"></div>
-    </div>
+<div id="body">
+    <div id="map_canvas"></div>
+</div>
 
-    <div id="selections">
-        <div id="filterselections">
-            <h3 class="subheader">Show me the following:</h3>
-            <div id="activities">
-                <form class="pictures">
-                  <img class="pictureselect" src="img/arts.png" title="arts" id="arts" onclick="selectimage('arts')"/><p>Arts</p>
-                  <img class="pictureselect" src="img/coffee.png" title="coffee" id="coffee" onclick="selectimage('coffee')"/><p>Coffee</p>
-                  <img class="pictureselect" src="img/drinks.png" title="drinks" id="drinks" onclick="selectimage('drinks')"/><p>Drinks</p>
-                  <img class="pictureselect" src="img/family.png" title="family" id="family" onclick="selectimage('family')"/><p>Family</p>
-                  <img class="pictureselect" src="img/food.png" title="food" id="food" onclick="selectimage('food')"/><p>Food</p>
-                  <img class="pictureselect" src="img/nightlife.png" title="nightlife" id="nightlife" onclick="selectimage('nightlife')"/><p>Nightlife</p>
-                  <img class="pictureselect" src="img/shopping.png" title="shopping" id="shopping" onclick="selectimage('shopping')"/><p>Shopping</p>
-                  <img class="pictureselect" src="img/sights.png" title="sights" id="sights" onclick="selectimage('sights')"/><p>Sights</p>
-              </form>
-          </div>
-          <h3 class="subheader" style="
-          margin-top: -25px;">See results from:</h3>
-          <div id="recommendations">
-            <form class="custom">
-                <label for="checkbox1">
-                    <input type="checkbox" id="checkbox1" style="display: none;">
-                    <span class="custom checkbox"></span>  Private
-                </label>
-                <label for="checkbox2">
-                    <input type="checkbox" id="checkbox2" style="display: none;">
-                    <span class="custom checkbox"></span>  Friends
-                </label>
-                <label for="checkbox3">
-                    <input type="checkbox" id="checkbox3" style="display: none;">
-                    <span class="custom checkbox"></span>  Everyone
-                </label>
-                <label for="checkbox4">
-                    <input type="checkbox" id="checkbox4" style="display: none;">
-                    <span class="custom checkbox"></span>  Public
-                </label>
-            </form>
+<div id="selections">
+    <div id="filterselections">
+        <h3 class="subheader">Show me the following:</h3>
+        <div id="activities">
+            <form class="pictures">
+              <img class="pictureselect" src="img/arts.png" title="arts" id="arts" onclick="selectimage('arts')"/><p>Arts</p>
+              <img class="pictureselect" src="img/coffee.png" title="coffee" id="coffee" onclick="selectimage('coffee')"/><p>Coffee</p>
+              <img class="pictureselect" src="img/drinks.png" title="drinks" id="drinks" onclick="selectimage('drinks')"/><p>Drinks</p>
+              <img class="pictureselect" src="img/adventure.png" title="adventure" id="adventure" onclick="selectimage('adventure')"/><p>Family</p>
+              <img class="pictureselect" src="img/food.png" title="food" id="food" onclick="selectimage('food')"/><p>Food</p>
+              <img class="pictureselect" src="img/nightlife.png" title="nightlife" id="nightlife" onclick="selectimage('nightlife')"/><p>Nightlife</p>
+              <img class="pictureselect" src="img/shopping.png" title="shopping" id="shopping" onclick="selectimage('shopping')"/><p>Shopping</p>
+              <img class="pictureselect" src="img/sights.png" title="sights" id="sights" onclick="selectimage('sights')"/><p>Sights</p>
+          </form>
+      </div>
+      <h3 class="subheader">See results from:</h3>
+      <div id="recommendations">
+        <form class="custom">
+            <label for="checkbox1">
+                <input type="checkbox" id="checkbox1" style="display: none;">
+                <span class="custom checkbox"></span>  Private
+            </label>
+            <label for="checkbox2">
+                <input type="checkbox" id="checkbox2" style="display: none;">
+                <span class="custom checkbox"></span>  Friends
+            </label>
+            <label for="checkbox3">
+                <input type="checkbox" id="checkbox3" style="display: none;">
+                <span class="custom checkbox"></span>  Everyone
+            </label>
+            <label for="checkbox4">
+                <input type="checkbox" id="checkbox4" style="display: none;">
+                <span class="custom checkbox"></span>  Public
+            </label>
+        </form>
+    </div>
+</div>
+<div class="section-container accordion" data-section="accordion" id="results">  
+
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/food.png"/>
+                </div>
+                <div id="data">
+                    <div id="name">
+                        Restó Donté Ristorante
+                    </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
+                    </div>
+                </div>
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>0.5 mi</span>
+                </div>
+            </a>
         </div>
-    </div>
-    <div class="section-container accordion" data-section="accordion" id="results">  
-
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/food.png"/>
-                    </div>
-                    <div id="data">
-                        <div id="name">
-                            Restó Donté Ristorante
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
-                    </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>0.5 mi</span>
-                    </div>
-                </a>
-            </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
-                    <div id="socialnetworks"></div>
-                    <div id="friendreview">
-                        <h2>75%</h2> 
-                        <p>positive</p>
-                    </div>
-                    <div id="publicreview">
-                        <h2>60%</h2> 
-                        <p>positive</p>
-                    </div> 
+        <div class="content" data-section-content>
+            <div id="navigation">
+                <div id="socialnetworks"></div>
+                <div id="friendreview">
+                    <h2>75%</h2> 
+                    <p>positive</p>
                 </div>
-                <div id="fullcomments">
-                    This is the best place you'll ever want to
-                    go to. It has everything you want, everything
-                    you need, period. Come!
-                </div>
+                <div id="publicreview">
+                    <h2>60%</h2> 
+                    <p>positive</p>
+                </div> 
+            </div>
+            <div id="fullcomments">
+                This is the best place you'll ever want to
+                go to. It has everything you want, everything
+                you need, period. Come!
+            </div>
 
-            </div>
-        </section>
-        
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/arts.png"/>
-                    </div>
-                    <div id="data">
-                        <div id="name">
-                            Drama Theatrical Inc.
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
-                    </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>1.5 mi</span>
-                    </div>
-                </a>
-            </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
-                    <div id="socialnetworks"></div>
-                    <div id="friendreview">
-                        <h2>75%</h2> 
-                        <p>positive</p>
-                    </div>
-                    <div id="publicreview">
-                        <h2>60%</h2> 
-                        <p>positive</p>
-                    </div> 
-                </div>
-                <div id="fullcomments">
-                    This is the best place you'll ever want to
-                    go to. It has everything you want, everything
-                    you need, period. Come!
-                </div>
+        </div>
+    </section>
 
-            </div>
-        </section>
-
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/coffee.png"/>
-                    </div>
-                    <div id="data">
-                        <div id="name">
-                            Java Desires
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
-                    </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>2.5 mi</span>
-                    </div>
-                </a>
-            </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
-                    <div id="socialnetworks"></div>
-                    <div id="friendreview">
-                        <h2>75%</h2> 
-                        <p>positive</p>
-                    </div>
-                    <div id="publicreview">
-                        <h2>60%</h2> 
-                        <p>positive</p>
-                    </div> 
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/arts.png"/>
                 </div>
-                <div id="fullcomments">
-                    This is the best place you'll ever want to
-                    go to. It has everything you want, everything
-                    you need, period. Come!
+                <div id="data">
+                    <div id="name">
+                        Drama Theatrical Inc.
+                    </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
+                    </div>
                 </div>
-
-            </div>
-        </section>
-
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/drinks.png"/>
-                    </div>
-                    <div id="data">
-                        <div id="name">
-                            The Coolest Bar Ever
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
-                    </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>6.5 mi</span>
-                    </div>
-                </a>
-            </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
-                    <div id="socialnetworks"></div>
-                    <div id="friendreview">
-                        <h2>75%</h2> 
-                        <p>positive</p>
-                    </div>
-                    <div id="publicreview">
-                        <h2>60%</h2> 
-                        <p>positive</p>
-                    </div> 
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>1.5 mi</span>
                 </div>
-                <div id="fullcomments">
-                    This is the best place you'll ever want to
-                    go to. It has everything you want, everything
-                    you need, period. Come!
+            </a>
+        </div>
+        <div class="content" data-section-content>
+            <div id="navigation">
+                <div id="socialnetworks"></div>
+                <div id="friendreview">
+                    <h2>75%</h2> 
+                    <p>positive</p>
                 </div>
-
+                <div id="publicreview">
+                    <h2>60%</h2> 
+                    <p>positive</p>
+                </div> 
             </div>
-        </section>
-
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/Family.png"/>
-                    </div>
-                    <div id="data">
-                        <div id="name">
-                            Bedtime Stories
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
-                    </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>8.5 mi</span>
-                    </div>
-                </a>
+            <div id="fullcomments">
+                This is the best place you'll ever want to
+                go to. It has everything you want, everything
+                you need, period. Come!
             </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
+
+        </div>
+    </section>
+
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/coffee.png"/>
                 </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/nightlife.png"/>
+                <div id="data">
+                    <div id="name">
+                        Java Desires
                     </div>
-                    <div id="data">
-                        <div id="name">
-                            The Club Oontz Oontz
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
                     </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>20.5 mi</span>
-                    </div>
-                </a>
-            </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
                 </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/shopping.png"/>
-                    </div>
-                    <div id="data">
-                        <div id="name">
-                            Hipster Mall
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
-                    </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>29.5 mi</span>
-                    </div>
-                </a>
-            </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>2.5 mi</span>
                 </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="title" data-section-title>
-                <a href="info" class="infocard">
-                    <div id="activityicon">
-                        <img src="img/sights.png"/>
-                    </div>
-                    <div id="data">
-                        <div id="name">
-                            The Coliseum 
-                        </div>
-                        <div id="address">
-                            123 Main St, Los Angeles, CA 90007
-                        </div>
-                    </div>
-                    <div id="distance">
-                        <img src="img/map.png"/></br>
-                        <span>36.5 mi</span>
-                    </div>
-                </a>
-            </div>
-            <div class="content" data-section-content>
-                <div id="navigation">
+            </a>
+        </div>
+        <div class="content" data-section-content>
+            <div id="navigation">
+                <div id="socialnetworks"></div>
+                <div id="friendreview">
+                    <h2>75%</h2> 
+                    <p>positive</p>
                 </div>
+                <div id="publicreview">
+                    <h2>60%</h2> 
+                    <p>positive</p>
+                </div> 
             </div>
-        </section>
+            <div id="fullcomments">
+                This is the best place you'll ever want to
+                go to. It has everything you want, everything
+                you need, period. Come!
+            </div>
 
-    </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/drinks.png"/>
+                </div>
+                <div id="data">
+                    <div id="name">
+                        The Coolest Bar Ever
+                    </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
+                    </div>
+                </div>
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>6.5 mi</span>
+                </div>
+            </a>
+        </div>
+        <div class="content" data-section-content>
+            <div id="navigation">
+                <div id="socialnetworks"></div>
+                <div id="friendreview">
+                    <h2>75%</h2> 
+                    <p>positive</p>
+                </div>
+                <div id="publicreview">
+                    <h2>60%</h2> 
+                    <p>positive</p>
+                </div> 
+            </div>
+            <div id="fullcomments">
+                This is the best place you'll ever want to
+                go to. It has everything you want, everything
+                you need, period. Come!
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/adventure.png"/>
+                </div>
+                <div id="data">
+                    <div id="name">
+                        Bedtime Stories
+                    </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
+                    </div>
+                </div>
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>8.5 mi</span>
+                </div>
+            </a>
+        </div>
+        <div class="content" data-section-content>
+            <div id="navigation">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/nightlife.png"/>
+                </div>
+                <div id="data">
+                    <div id="name">
+                        The Club Oontz Oontz
+                    </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
+                    </div>
+                </div>
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>20.5 mi</span>
+                </div>
+            </a>
+        </div>
+        <div class="content" data-section-content>
+            <div id="navigation">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/shopping.png"/>
+                </div>
+                <div id="data">
+                    <div id="name">
+                        Hipster Mall
+                    </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
+                    </div>
+                </div>
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>29.5 mi</span>
+                </div>
+            </a>
+        </div>
+        <div class="content" data-section-content>
+            <div id="navigation">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="title" data-section-title>
+            <a href="info" class="infocard">
+                <div id="activityicon">
+                    <img src="img/sights.png"/>
+                </div>
+                <div id="data">
+                    <div id="name">
+                        The Coliseum 
+                    </div>
+                    <div id="address">
+                        123 Main St, Los Angeles, CA 90007
+                    </div>
+                </div>
+                <div id="distance">
+                    <img src="img/map.png"/></br>
+                    <span>36.5 mi</span>
+                </div>
+            </a>
+        </div>
+        <div class="content" data-section-content>
+            <div id="navigation">
+            </div>
+        </div>
+    </section>
+
+</div>
 </div>
 
 <div id="footer">

@@ -2412,11 +2412,10 @@ form.custom {
   .top-bar-section ul li > a {
     display: block;
     width: 100%;
-    color: white;
+    color: black;
     padding: 12px 0 12px 0;
     padding-left: 15px;
     font-size: 0.8125em;
-    font-weight: bold;
     background: #333333;
     height: 45px; }
     .top-bar-section ul li > a:hover {
@@ -2439,7 +2438,7 @@ form.custom {
       .top-bar-section ul li > a.button.alert:hover {
         background: #970b0e; }
   .top-bar-section ul li.active > a {
-    background: #2b2b2b; }
+    background: #bbbbbb; }
   .top-bar-section .has-form {
     padding: 15px; }
   .top-bar-section .has-dropdown {
@@ -2494,7 +2493,7 @@ form.custom {
 
 @media only screen and (min-width: 58.75em) {
   .top-bar {
-    background: #111111;
+    background: #cccccc;
     *zoom: 1;
     overflow: visible; }
     .top-bar:before, .top-bar:after {
@@ -2539,9 +2538,9 @@ form.custom {
     .top-bar-section li a:not(.button) {
       padding: 0 15px;
       line-height: 45px;
-      background: #111111; }
+      background: #cccccc; }
       .top-bar-section li a:not(.button):hover {
-        background: black; }
+        background: #777777; }
     .top-bar-section .has-dropdown > a {
       padding-right: 35px !important; }
       .top-bar-section .has-dropdown > a:after {
@@ -2569,11 +2568,11 @@ form.custom {
       background: transparent;
       min-width: 100%; }
       .top-bar-section .dropdown li a {
-        color: white;
+        color: black;
         line-height: 1;
         white-space: nowrap;
         padding: 7px 15px;
-        background: #1e1e1e; }
+        background: #cccccc; }
       .top-bar-section .dropdown li label {
         white-space: nowrap;
         background: #1e1e1e; }
@@ -2583,8 +2582,7 @@ form.custom {
     .top-bar-section > ul > .divider {
       border-bottom: none;
       border-top: none;
-      border-right: solid 1px #2b2b2b;
-      border-left: solid 1px black;
+      border-right: solid 1px #999999;
       clear: none;
       height: 45px;
       width: 0px; }
@@ -2808,7 +2806,7 @@ form.custom {
   position: absolute;
   background: black;
   color: white;
-  z-index: 101;
+  z-index: 1;
   top: 0;
   left: 2.5%;
   font-family: inherit;

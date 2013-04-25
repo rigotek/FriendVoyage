@@ -83,6 +83,13 @@
   .viewdiv{
     float:left;
   }
+  #decorationline{
+    height:5px;
+    width:100%;
+    background-color:black;
+    margin-top:45px;
+    position:absolute;
+  }
   </style>
 
 </head>
@@ -91,8 +98,29 @@
 
   <!-- header included from header-->
   <div id="header">
-    <img src= "img/friendvoyage.png" style="
-    margin-top: 5px;"></img>
+    <div id="decorationline"></div>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <img src= "img/friendvoyage.png" style="
+          margin-top: 2px;"></img>        
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider"></li>
+          <li><a href="#">About Us</a></li>
+          <li class="divider"></li>
+          <li class="active has-dropdown"><a href="#">Settings</a>
+            <ul class="dropdown">
+              <li><a href="#">Login/Logout</a></li>
+              <li><a href="#">Preferences</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
   </div>
 
   <!-- body includes map-->
@@ -103,84 +131,102 @@
   <!-- selections, which enables user input-->
   <div id="selections" class="section-container" data-section="accordion">
 
-    <section class="section active">
+    <section class="section active" id="step1">
       <p class="title" data-section-title><a href="#">Where Are You Going?</a></p>
       <div class="content" data-section-content>
         <div class="row collapse">
           <div class="small-10 columns">
-            <input type="text" id="address" placeholder="Add Location or Drop Pin">
+            <input type="text" id="address" placeholder="Input Location">
           </div>
           <div class="small-2 columns">
             <a href="#" class="button prefix" id = "valuesubmit" onclick="addtolist(address.value)">Add</a>
           </div>
         </div>
-        <!--
+      <!--  
         <div class="placeselected" id="addingcities">
           <ul class="side-nav">
             <li>Destinations Selected:</li>
           </ul>
         </div>
       -->
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <p class="title" data-section-title><a href="#">When Are You Going?</a></p>
-      <div class="content" data-section-content>
-        <p>From: <input type="text" id="fromdatepicker" /></p>
-        <p>To: <input type="text" id="todatepicker" /></p>
-      </div>
-    </section>
+  <section class="section" id="step2">
+    <p class="title" data-section-title><a href="#">When Are You Going?</a></p>
+    <div class="content" data-section-content>
+      <p>From: <input type="text" id="fromdatepicker" /></p>
+      <p>To: <input type="text" id="todatepicker" /></p>
+    </div>
+  </section>
 
-    <section class="section">
-      <p class="title" data-section-title><a href="#">What Would You Like To Do?</a></p>
-      <div id="activityselection" class="content" data-section-content>
+  <section class="section" id="step3">
+    <p class="title" data-section-title><a href="#">What Would You Like To Do?</a></p>
+    <div id="activityselection" class="content" data-section-content>
 
-        <form class="pictures">
-          <img class="pictureselect" src="img/arts.png" title="arts" id="arts" onclick="selectimage('arts')"/><p>Arts</p>
-          <img class="pictureselect" src="img/coffee.png" title="coffee" id="coffee" onclick="selectimage('coffee')"/><p>Coffee</p>
-          <img class="pictureselect" src="img/drinks.png" title="drinks" id="drinks" onclick="selectimage('drinks')"/><p>Drinks</p>
-          <img class="pictureselect" src="img/family.png" title="family" id="family" onclick="selectimage('family')"/><p>Family</p>
-          <img class="pictureselect" src="img/food.png" title="food" id="food" onclick="selectimage('food')"/><p>Food</p>
-          <img class="pictureselect" src="img/nightlife.png" title="nightlife" id="nightlife" onclick="selectimage('nightlife')"/><p>Nightlife</p>
-          <img class="pictureselect" src="img/shopping.png" title="shopping" id="shopping" onclick="selectimage('shopping')"/><p>Shopping</p>
-          <img class="pictureselect" src="img/sights.png" title="sights" id="sights" onclick="selectimage('sights')"/><p>Sights</p>
-        </form>
-      </div>
-    </section>
+      <form class="pictures">
+        <img class="pictureselect" src="img/adventure.png" title="adventure" id="adventure" onclick="selectimage('adventure')"/><p>Adventure</p>
+        <img class="pictureselect" src="img/arts.png" title="arts" id="arts" onclick="selectimage('arts')"/><p>Arts</p>
+        <img class="pictureselect" src="img/coffee.png" title="coffee" id="coffee" onclick="selectimage('coffee')"/><p>Coffee</p>
+        <img class="pictureselect" src="img/drinks.png" title="drinks" id="drinks" onclick="selectimage('drinks')"/><p>Drinks</p>
+        <img class="pictureselect" src="img/food.png" title="food" id="food" onclick="selectimage('food')"/><p>Food</p>
+        <img class="pictureselect" src="img/nightlife.png" title="nightlife" id="nightlife" onclick="selectimage('nightlife')"/><p>Nightlife</p>
+        <img class="pictureselect" src="img/shopping.png" title="shopping" id="shopping" onclick="selectimage('shopping')"/><p>Shopping</p>
+        <img class="pictureselect" src="img/sights.png" title="sights" id="sights" onclick="selectimage('sights')"/><p>Sights</p>
+      </form>
 
-    <section class="section">
-      <p class="title" data-section-title><a href="#">Give Your Trip an Epic Name</a></p>
-      <div class="content" data-section-content>
-        <form class="custom">
-          <input type="text" id="tripname" placeholder="Name Your Trip">
-        </form>
-        <a href="#" class="button" id="submitselectionbutton" onclick="openModal('#signinmodal')">Submit Trip</a>
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <div id="footer">
-  </div>
+  <section class="section" id="step4">
+    <p class="title" data-section-title><a href="#">Give Your Trip an Epic Name</a></p>
+    <div class="content" data-section-content>
+      <form class="custom">
+        <input type="text" id="tripname" placeholder="Name Your Trip">
+      </form>
+      <a href="#" class="button" id="submitselectionbutton" onclick="openModal('#signinmodal')">Submit Trip</a>
+    </div>
+  </section>
+</div>
 
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="js/vendor/custom.modernizr.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-  <script>
-  var selectimage = function(obj){
-    if(document.getElementById(obj).style.opacity < "1"){
-      document.getElementById(obj).style.opacity = "1";
-    }
-    else
-      document.getElementById(obj).style.opacity = ".25";
+<div id="footer">
+</div>
+
+<ol class="joyride-list" data-joyride>
+  <li data-id="step1" data-text="Next" data-options="tipLocation:left">
+    <p>To get started, type in the places you'd like to visit</p>
+  </li>
+  <li data-id="step2" data-text="Next" data-options="tipLocation:left">
+    <p>Tell us the dates you're going here</p>
+  </li>
+  <li data-id="step3" data-text="Next" data-options="tipLocation:left">
+    <p>Select all the activities you'd like to participate here</p>
+  </li>
+  <li data-id="step4" data-text="Next" data-options="tipLocation:left">
+    <p>Name your trip so you can reference it later</p>
+  </li>
+</ol>
+
+<!--variety os scripts to get the map to work, as well as foundation's infrastructure-->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="js/vendor/custom.modernizr.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+<script>
+var selectimage = function(obj){
+  if(document.getElementById(obj).style.opacity < "1"){
+    document.getElementById(obj).style.opacity = "1";
   }
-  </script>
-  <script src="js/jquery.share.js"></script>                     
+  else
+    document.getElementById(obj).style.opacity = ".25";
+}
+</script>
+<script src="js/jquery.share.js"></script>                     
 
-  <script type="text/javascript">
+<script type="text/javascript">
     //initializes the datepicker
     $('#fromdatepicker').datepicker();
     $('#todatepicker').datepicker();						
@@ -404,6 +450,12 @@ google.maps.event.addDomListener(window, 'load', initMap);
         }
       }
       </script>
+
+      <!-- scripts to make the popup guide work-->
+      <script type="text/javascript">
+      $(document).foundation('joyride', 'start');
+      </script>
+
       <div id="signinmodal" class="reveal-modal">
 
         <div class="viewdiv">

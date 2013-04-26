@@ -42,6 +42,15 @@
     #footer{
         height:50px;
     }
+    #footer{
+        width:100%;
+        background-color: #cccccc;
+    }
+    #blackline{
+        width:100%;
+        height:5px;
+        background-color: black;
+    }
     #recommendations{
         -moz-column-count:4; /* Firefox */
         -webkit-column-count:4; /* Safari and Chrome */
@@ -109,7 +118,7 @@
     }
     #results{
         overflow: auto;
-        height:425px;
+        height:407px;
     }
     #navigation{
         margin:-10px;
@@ -206,10 +215,10 @@
         <h3 class="subheader">Show me the following:</h3>
         <div id="activities">
             <form class="pictures">
+              <img class="pictureselect" src="img/adventure.png" title="adventure" id="adventure" onclick="selectimage('adventure')"/><p>Adventure</p>
               <img class="pictureselect" src="img/arts.png" title="arts" id="arts" onclick="selectimage('arts')"/><p>Arts</p>
               <img class="pictureselect" src="img/coffee.png" title="coffee" id="coffee" onclick="selectimage('coffee')"/><p>Coffee</p>
               <img class="pictureselect" src="img/drinks.png" title="drinks" id="drinks" onclick="selectimage('drinks')"/><p>Drinks</p>
-              <img class="pictureselect" src="img/adventure.png" title="adventure" id="adventure" onclick="selectimage('adventure')"/><p>Family</p>
               <img class="pictureselect" src="img/food.png" title="food" id="food" onclick="selectimage('food')"/><p>Food</p>
               <img class="pictureselect" src="img/nightlife.png" title="nightlife" id="nightlife" onclick="selectimage('nightlife')"/><p>Nightlife</p>
               <img class="pictureselect" src="img/shopping.png" title="shopping" id="shopping" onclick="selectimage('shopping')"/><p>Shopping</p>
@@ -507,11 +516,13 @@
             </div>
         </div>
     </section>
-
 </div>
 </div>
 
 <div id="footer">
+    <div id="blackline"></div>
+</div>
+<!--
     <div class="large-6 columns">
         <div class="row collapse">
             <div class="small-10 columns">
@@ -526,8 +537,8 @@
                 </ul>
             </div>
         </div>
-    </div>
 </div>
+-->
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="js/vendor/custom.modernizr.js"></script>
@@ -645,7 +656,8 @@ var getlatlng = function(lat, lng){
 };
 //add marker
 //var addmarker = google.maps.event.addListener(map, 'click', addMarkerHandler);
-var addMarkerHandler = function(e){
+// TODO change back to local
+addMarkerHandler = function(e){
     console.log(e);
     var lat = e.latLng.lat();
     var lng = e.latLng.lng();
@@ -658,14 +670,17 @@ var addMarkerHandler = function(e){
 });
     markers[markerid] = marker;
     markerevent(marker);
+
 //reverse lookup
 var geocoder = new google.maps.Geocoder();
 var infowindow = new google.maps.InfoWindow();
 var latlng = getlatlng(lat, lng);
+
 geocoder.geocode({'latLng': latlng}, function(results) {
     infowindow.setContent(results[1].formatted_address);
     //infowindow.open(map, marker);   
 });
+
 google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map,marker);
 });
@@ -694,6 +709,23 @@ var deletemarker = function(marker, markerid){
     }
     </script>
 
+    <script>
+    $('.accordion section').hover(function(event) {
+        console.log(event)
+        var e = {
+            latLng: {
+                lat: function () {
+                    return 48.856614;
+                    // return $(this).attr('data-lat');
+                },
+                lng: function () {
+                    return 2.3522219000000177;
+                }
+            }
+        }
+        //addMarkerHandler(e);
+    });
+    </script>
     <script>
         //must add in order for foundation to work
         document.write('<script src=' +

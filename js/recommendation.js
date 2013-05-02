@@ -1,5 +1,4 @@
 
-
     //initializes sharing on facebook
     $(document).ready(function(){
       $('#socialnetworks').share({
@@ -139,7 +138,8 @@
         var infowindow = new google.maps.InfoWindow();
         var latlng = getlatlng(lat, lng);
         geocoder.geocode({'latLng': latlng}, function(results) {
-         infowindow.setContent(results[1].formatted_address);
+            var str = $('#recommendationtext').val(); //adds description to popup info window
+         infowindow.setContent(results[1].formatted_address + '<br>' + str);
        });
         //API which allows for the clicking to bind to the infowindow action
         google.maps.event.addListener(marker, 'click', function(){

@@ -221,9 +221,9 @@
    '.js><\/script>')
 
 
-<!-- scripts to make the popup guide work
+/** scripts to make the popup guide work
   $(document).foundation('joyride', 'start');
--->
+**/
   <!-- script to make the add more button work-->
   var startoveraccordion=function(){
     $('.section').removeClass('active');

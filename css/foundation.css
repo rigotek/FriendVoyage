@@ -2813,7 +2813,7 @@ form.custom {
   font-weight: normal;
   width: 95%; }
   
-.joyride-tip-guide.home {
+.joyride-tip-guide.noride {
   display: block;
   position: absolute;
   background: black;
@@ -2835,7 +2835,7 @@ form.custom {
   padding: 1.125em 1.25em 1.5em; }
   .joyride-content-wrapper .button {
     margin-bottom: 0 !important; }
-.joyride-tip-guide.home .joyride-content-wrapper{
+.joyride-tip-guide.noride .joyride-content-wrapper{
   padding: 1.5em 1.25em 1.5em;}
   
 /* Add a little css triangle pip, older browser just miss out on the fanciness of it */

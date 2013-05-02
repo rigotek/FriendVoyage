@@ -56,7 +56,7 @@
 
   <div id="filterselections">
 
-    <div id="selections" class="section-container" data-section="accordion">
+    <form id="selections" class="section-container" data-section="accordion">
 
       <section class="section active" id="step1">
         <p class="title" data-section-title>
@@ -216,8 +216,8 @@
         </p>
         <div class="content" data-section-content>
           <div class="row">
-            <a href='#' class="button small-5 columns" type="button" id="address" onclick="startoveraccordion()">Add More</a>
-            <a href='#' class="button small-5 columns" type="button" id="address">I'm Done</a>
+            <input type="submit" class="button small-5 columns"  id="address" onclick="startoveraccordion()" value="Add More" />
+            <input type="submit" class="button small-5 columns"  id="address" value="I'm Done" />
           </div>
           <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.noride" css in foundation to remove display:none -->
           <div class="joyride-tip-guide noride">
@@ -288,6 +288,16 @@
     		$('.joyride-tip-guide').css('display','none');
 	   });				
       </script>
+
+<!-- script to store the recommendation-->
+  <script type="text/javascript">
+	$('#selections').submit(function() {
+  console.log($(this).serializeArray());
+  return false;
+});
+
+</script>
+
 
   <div id="linkmodal" class="reveal-modal">
     <h2>Congratulations! Here is the link for your map. Share it with your friends!</h2>

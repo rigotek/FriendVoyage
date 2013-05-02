@@ -2812,6 +2812,18 @@ form.custom {
   font-family: inherit;
   font-weight: normal;
   width: 95%; }
+  
+.joyride-tip-guide.home {
+  display: block;
+  position: absolute;
+  background: black;
+  color: white;
+  z-index: 1;
+  top: 0;
+  left: 310px;
+  font-family: inherit;
+  font-weight: normal;
+  width: 95%; }
 
 .lt-ie9 .joyride-tip-guide {
   max-width: 800px;
@@ -2823,7 +2835,9 @@ form.custom {
   padding: 1.125em 1.25em 1.5em; }
   .joyride-content-wrapper .button {
     margin-bottom: 0 !important; }
-
+.joyride-tip-guide.home .joyride-content-wrapper{
+  padding: 1.5em 1.25em 1.5em;}
+  
 /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
 .joyride-tip-guide .joyride-nub {
   display: block;

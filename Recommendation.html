@@ -132,6 +132,14 @@
               </div>
             </div>
           </div>
+          <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
+          <div class="joyride-tip-guide noride">
+              <div class="joyride-content-wrapper">
+                  <a href="#close" class="joyride-close-tip">×</a>
+                  <p>Select an icon that best represents what you're recommending</p>
+                  <span class="joyride-nub left noride"></span>
+              </div>
+          </div>               
         </div>
       </section>
 
@@ -170,6 +178,14 @@
               </div>
             </div>
           </div>
+          <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
+          <div class="joyride-tip-guide noride">
+              <div class="joyride-content-wrapper">
+                  <a href="#close" class="joyride-close-tip">×</a>
+                  <p>Why should your friend visit this place?</p>
+                  <span class="joyride-nub left noride"></span>
+              </div>
+          </div>             
         </div>
       </section>
 
@@ -182,6 +198,14 @@
             <input class="small-10 columns" type="text" id="address" placeholder="Find location">
             <a href="#" class="button prefix small-2 columns" id = "valuesubmit" onclick="addtolist(address.value)">Add</a>
           </div>
+           <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
+          <div class="joyride-tip-guide noride">
+              <div class="joyride-content-wrapper">
+                  <a href="#close" class="joyride-close-tip">×</a>
+                  <p>Find it using the textbox</p>
+                  <span class="joyride-nub left noride"></span>
+              </div>
+          </div>      
         </div>
       </section>
 
@@ -194,6 +218,14 @@
             <a href='#' class="button small-5 columns" type="button" id="address" onclick="startoveraccordion()">Add More</a>
             <a href='#' class="button small-5 columns" type="button" id="address">I'm Done</a>
           </div>
+          <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
+          <div class="joyride-tip-guide noride">
+              <div class="joyride-content-wrapper">
+                  <a href="#close" class="joyride-close-tip">×</a>
+                  <p>Wanna keep going? Hit yes, if you're done, hit complete</p>
+                  <span class="joyride-nub left noride"></span>
+              </div>
+          </div>     
         </div>
       </section>
 
@@ -249,7 +281,12 @@
   <script>
   $(document).foundation();
   </script>
-
+<!-- script to make the popup close-->
+      <script>
+	  $('.joyride-close-tip').click(function(){
+    		$('.joyride-tip-guide').css('display','none');
+	   });				
+      </script>
 
   <div id="linkmodal" class="reveal-modal">
     <h2>Congratulations! Here is the link for your map. Share it with your friends!</h2>

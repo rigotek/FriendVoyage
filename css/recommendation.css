@@ -1,0 +1,125 @@
+  #map_canvas{
+    height:550px;
+    width:100%;
+  }
+  #selections{
+    position:fixed;
+    top:55px;
+    left:75px;
+    width:300px;
+  }
+  label{
+    cursor:pointer;
+  }
+  #submitselectionbutton{
+    padding:5px;
+  }
+  #header,
+  #footer{
+    height:50px;
+  }
+  #footer{
+    width:100%;
+    background-color: #cccccc;
+  }
+  #blackline{
+    width:100%;
+    height:5px;
+    background-color: black;
+  }
+  p.title{
+    height:50px;
+    padding:10px;
+  }
+  .pictureselect input,
+  .gradeselect input{
+    visibility: hidden;
+  }
+  .gradeselect{
+    margin-bottom:-60px;
+    margin-top:-20px;
+    width: 75px;
+  }
+  #givegrade{
+    margin-left: 27px;
+    height:30px;
+  }
+  .pictureselect p{
+    font:12px;
+    float:left;
+    text-align: center;
+    width:100%;
+    margin-bottom:-10px;
+  }
+  .gradeselect{
+    float:left;
+    padding:10px;
+    width:80px;
+  }
+  #activities li{
+    text-align: center;
+  }
+  #activities{
+    margin-bottom: -15px;
+  }
+  .pictures{
+    width:100%;
+    -moz-column-count:4; /* Firefox */
+    -webkit-column-count:4; /* Safari and Chrome */
+    column-count:4;
+    text-align: center;
+    font-size: 10px;
+    list-style: none;
+  }
+  .pictureselect:hover,
+  .gradeselect:hover{
+    opacity: .25;
+  }
+  #recommendationtext{
+    height:100px;
+    overflow: auto;
+  }
+  #registerview,
+  #resetview,
+  #resetviewinfofilled,
+  #registerwith{
+    visibility: hidden;
+    position:absolute;
+  }
+  #signinview,
+  #signinwith{
+    visibility: visible;
+    position:absolute;
+  }
+  #signinmodal{
+    height:525px;
+  }
+  .socialdiv{
+    float:left;
+    margin-left:300px;
+    margin-right:20px;
+    padding:20px;
+  }
+  .viewdiv{
+    float:left;
+  }
+  h3{
+    font-size: 14px;
+    padding:5px;
+  }
+  #filterselections{
+    background-color: #CCCCCC;
+  }
+  #recheader{
+    margin-top: -20px;
+  }
+  #finditheader{
+    margin-top: -10px;
+  }
+  #decorationline{
+    height:5px;
+    width:100%;
+    background-color:black;
+    margin-top:45px;
+    position:absolute;
+  }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
@@ -13,93 +13,8 @@
 	<link rel="stylesheet" href="css/normalize.css" />
 	<link rel="stylesheet" href="css/foundation.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-  <link rel="stylesheet" href="css/jquery.share.css" />
-
-
-  <style type="text/css">
-  #map_canvas{
-    height:550px;
-    width:100%;
-  }
-  #selections{
-    position:fixed;
-    top:55px;
-    left:75px;
-    width:300px;
-  }
-  label{
-    padding:5px;
-  }
-  #submitselectionbutton{
-    padding:5px;
-  }
-  #header,
-  #footer{
-    height:50px;
-  }
-  #footer{
-    width:100%;
-    background-color: #cccccc;
-  }
-  #blackline{
-    width:100%;
-    height:5px;
-    background-color: black;
-  }
-  p.title{
-    height:50px;
-    padding:10px;
-  }
-  .pictureselect{
-    opacity: .25;
-  }
-  .pictureselect p{
-    font:12px;
-    float:left;
-  }
-  .pictureselect:hover{
-    opacity: .5;
-  }
-  .pictures{
-    width:100%;
-    -moz-column-count:4; /* Firefox */
-    -webkit-column-count:4; /* Safari and Chrome */
-    column-count:4;
-    text-align: center;
-    font-size: 10px
-  }
-  #registerview,
-  #resetview,
-  #resetviewinfofilled,
-  #registerwith{
-    visibility: hidden;
-    position:absolute;
-  }
-  #signinview,
-  #signinwith{
-    visibility: visible;
-    position:absolute;
-  }
-  #signinmodal{
-    height:525px;
-  }
-  .socialdiv{
-    float:left;
-    margin-left:300px;
-    margin-right:20px;
-    padding:20px;
-  }
-  .viewdiv{
-    float:left;
-  }
-  #decorationline{
-    height:5px;
-    width:100%;
-    background-color:black;
-    margin-top:45px;
-    position:absolute;
-  }
-  </style>
+      <link rel="stylesheet" href="css/jquery.share.css" />
+      <link rel="stylesheet" href="css/home.css" />
 
 </head>
 
@@ -112,7 +27,7 @@
       <ul class="title-area">
         <li class="name">
           <img src= "img/friendvoyage.png" style="
-          margin-top: 2px;"></img>        
+          margin-top: 2px;"></img>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
       </ul>
@@ -151,7 +66,7 @@
             <a href="#" class="button prefix" id = "valuesubmit" onclick="addtolist(address.value)">Add</a>
           </div>
         </div>
-      <!--  
+      <!--
         <div class="placeselected" id="addingcities">
           <ul class="side-nav">
             <li>Destinations Selected:</li>
@@ -193,7 +108,7 @@
       <form class="custom">
         <input type="text" id="tripname" placeholder="Name Your Trip">
       </form>
-      <a href="#" class="button" id="submitselectionbutton" onclick="openModal('#signinmodal')">Submit Trip</a>
+      <a href="#" class="button" id="submitselectionbutton" onclick="saveToCookiesAndOpenModal('#signinmodal')">Submit Trip</a>
     </div>
   </section>
 </div>
@@ -224,180 +139,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script src="js/home.js"></script>
 
-<script>
-var selectimage = function(obj){
-  if(document.getElementById(obj).style.opacity < "1"){
-    document.getElementById(obj).style.opacity = "1";
-  }
-  else
-    document.getElementById(obj).style.opacity = ".25";
-}
-</script>
-<script src="js/jquery.share.js"></script>                     
+    <script src="js/jquery.share.js"></script>
 
-<script type="text/javascript">
-    //initializes the datepicker
-    $('#fromdatepicker').datepicker();
-    $('#todatepicker').datepicker();						
-
-    //initializes share
-    $(document).ready(function () {
-      $('#socialnetworks').share({
-        networks: ['facebook','twitter','googleplus','linkedin','pinterest','tumblr','stumbleupon','email'],
-        theme: 'square'
-      });
-    });
-	//closes the modal by the button
-	function closeModal(id){
-		//$('a.close-reveal-modal').trigger('click');
-		$(id).foundation('reveal', 'close');
-
-	}
-
-	function openModal(id){
-		$(id).foundation('reveal', 'open');
-	}
-
-	//initializes map
-	function initMap(){
-		//initializing modal the opening window
-		$('#myModal').foundation('reveal', 'open');
-		$('#myModal').foundation('reveal', 'close');
-        //initializing the map
-        var map;
-        var myOptions = {
-        	zoom: 2,
-        	center: latlng = new google.maps.LatLng(0, 0),
-        	mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var marker = new google.maps.Marker({});
-
-        //initialize auto complete
-        var input = document.getElementById('address');
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        //autocomplete.bindTo('bounds', map);
-        var infowindow = new google.maps.InfoWindow();
-
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        	infowindow.close();
-        	marker.setVisible(true);
-        	input.className = '';
-        	var place = autocomplete.getPlace();
-        	if (!place.geometry) {
-            // Inform the user that the place was not found and return.
-            input.className = 'notfound';
-            return;
-          }
-
-          // If the place has a geometry, then present it on a map.
-          if (place.geometry.viewport) {
-          	map.fitBounds(place.geometry.viewport);
-          } else {
-          	map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
-          }
-          marker.setPosition(place.geometry.location);
-          marker.setVisible(true);
-
-          var address = '';
-          if (place.address_components) {
-           address = [
-           (place.address_components[0] && place.address_components[0].short_name || ''),
-           (place.address_components[1] && place.address_components[1].short_name || ''),
-           (place.address_components[2] && place.address_components[2].short_name || '')
-           ].join(' ');
-         }
-
-         console.log(place)
-         var e = {
-           latLng: {
-            lat: function () {
-             return place.geometry.location.jb;
-           },
-           lng: function () {
-             return place.geometry.location.kb;
-           }
-         }
-       }
-       addMarkerHandler(e);
-       addtolist(place.formatted_address);
-     });
-
-google.maps.event.addDomListener(window, 'load', initMap);
-
-        //instance of the map
-        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-        //array to hold all the markers
-        var markers = {};
-        //create id for marker
-        var markeridcreator=function(lat, lng){return lat + '_' + lng;};
-        //create a lat lng getter
-        var getlatlng = function(lat, lng){return new google.maps.LatLng(lat, lng);};
-        //add marker
-        var addMarker = google.maps.event.addListener(map, 'click', addMarkerHandler);
-        //function that is called when addMarker is called
-        var placename;
-
-        var addMarkerHandler = function(e){
-        	console.log(e);
-        	var lat = e.latLng.lat();
-        	var lng = e.latLng.lng();
-        	var markerid = markeridcreator(lat, lng);
-        	var marker = new google.maps.Marker({
-        		position: getlatlng(lat, lng),
-        		map: map,
-        		id: 'marker_' + markerid,
-        		icon: 'img/plantrip.png'
-        	});
-        	markers[markerid] = marker;
-        	markerevent(marker);
-        	//reverse lookup
-        	var geocoder = new google.maps.Geocoder();
-        	var infowindow = new google.maps.InfoWindow();
-        	var latlng = getlatlng(lat, lng);
-        	geocoder.geocode({'latLng': latlng}, function(results) {
-        		infowindow.setContent(results[1].formatted_address);
-        		//infowindow.open(map, marker);	
-                //placename = results[1].formatted_address;
-              });
-        }
-        //marker event binder
-        var markerevent = function(marker){
-        	google.maps.event.addListener(marker, "rightclick", function(e){
-        		var markerid = markeridcreator(e.latLng.lat(), e.latLng.lng());
-        		var marker = markers[markerid];
-        		deletemarker(marker, markerid);
-        	});
-        };
-        //marker delete
-        var deletemarker = function(marker, markerid){
-        	marker.setMap(null);
-        	delete markers[markerid];
-            //removefromlist(placename);
-          };	
-        //remove value from list
-        var removefromlist = function(val){
-          $("#addingcities ul").remove('<li><a href="#">'+val+'</a></li>');
-            //$("#addingcities ul").update();
-          }
-        }
-        </script>
-
-        <script>
-    //add the inputted item in the list
-    var addtolist = function(val){
-    	$("#addingcities ul").append('<li><a href="#">'+val+'</a></li>');
-    	$("#valuesubmit").val("");
-    }
-    </script>
-
-    <script>
-    	//must add in order for foundation to work
-    	document.write('<script src=' +
-    		('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-    		'.js><\/script>')
-    	</script>
     	<script src="js/foundation/foundation.js"></script>
     	<script src="js/foundation/foundation.alerts.js"></script>
     	<script src="js/foundation/foundation.clearing.js"></script>
@@ -424,42 +169,6 @@ google.maps.event.addDomListener(window, 'load', initMap);
     		<a class="close-reveal-modal">&#215;</a>
     	</div>
 
-      <script>
-      var inputmode = function(obj){
-        if(obj == 'register'){
-          document.getElementById('signinview').style.visibility = 'hidden';
-          document.getElementById('registerview').style.visibility = 'visible';
-          document.getElementById('resetview').style.visibility = 'hidden';
-          document.getElementById('resetviewinfofilled').style.visibility = 'hidden';
-          document.getElementById('registerwith').style.visibility = 'visible';
-          document.getElementById('signinwith').style.visibility = 'hidden';
-        }
-        else if(obj == 'signin'){
-          document.getElementById('signinview').style.visibility = 'visible';
-          document.getElementById('registerview').style.visibility = 'hidden';
-          document.getElementById('resetview').style.visibility = 'hidden';
-          document.getElementById('resetviewinfofilled').style.visibility = 'hidden';
-          document.getElementById('registerwith').style.visibility = 'hidden';
-          document.getElementById('signinwith').style.visibility = 'visible';
-        }
-        else if(obj == 'reset'){
-          document.getElementById('signinview').style.visibility = 'hidden';
-          document.getElementById('registerview').style.visibility = 'hidden';
-          document.getElementById('resetview').style.visibility = 'visible';
-          document.getElementById('resetviewinfofilled').style.visibility = 'hidden';
-          document.getElementById('registerwith').style.visibility = 'hidden';
-          document.getElementById('signinwith').style.visibility = 'hidden';
-        }
-        else if(obj == 'resetfilled'){
-          document.getElementById('signinview').style.visibility = 'hidden';
-          document.getElementById('registerview').style.visibility = 'hidden';
-          document.getElementById('resetview').style.visibility = 'hidden';
-          document.getElementById('resetviewinfofilled').style.visibility = 'visible';
-          document.getElementById('registerwith').style.visibility = 'hidden';
-          document.getElementById('signinwith').style.visibility = 'hidden';
-        }
-      }
-      </script>
 
       <!-- scripts to make the popup guide work-->
       <script type="text/javascript">
@@ -519,7 +228,7 @@ google.maps.event.addDomListener(window, 'load', initMap);
 
         </div>
         <a class="close-reveal-modal">&#215;</a>
-      </div>   
+      </div>
 
       <div id="linkmodal" class="reveal-modal">
         <h2>Congratulations! Here is the link for your map. Share it with your friends!</h2>
@@ -528,7 +237,8 @@ google.maps.event.addDomListener(window, 'load', initMap);
         <div id="socialnetworks"></div></br>
         <a href="#" class="large button" onclick="window.open('Results.html', '_self')">Take Me Home</a>
         <a class="close-reveal-modal">&#215;</a>
-      </div>  
+      </div>
 
+  <script src="js/jquery-cookie-master/jquery.cookie.js"></script>
     </body>
     </html>

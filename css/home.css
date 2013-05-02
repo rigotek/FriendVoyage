@@ -1,0 +1,82 @@
+ #map_canvas{
+    height:550px;
+    width:100%;
+  }
+  #selections{
+    position:fixed;
+    top:55px;
+    left:75px;
+    width:300px;
+  }
+  label{
+    padding:5px;
+  }
+  #submitselectionbutton{
+    padding:5px;
+  }
+  #header,
+  #footer{
+    height:50px;
+  }
+  #footer{
+    width:100%;
+    background-color: #cccccc;
+  }
+  #blackline{
+    width:100%;
+    height:5px;
+    background-color: black;
+  }
+  p.title{
+    height:50px;
+    padding:10px;
+  }
+  .pictureselect{
+    opacity: .25;
+  }
+  .pictureselect p{
+    font:12px;
+    float:left;
+  }
+  .pictureselect:hover{
+    opacity: .5;
+  }
+  .pictures{
+    width:100%;
+    -moz-column-count:4; /* Firefox */
+    -webkit-column-count:4; /* Safari and Chrome */
+    column-count:4;
+    text-align: center;
+    font-size: 10px
+  }
+  #registerview,
+  #resetview,
+  #resetviewinfofilled,
+  #registerwith{
+    visibility: hidden;
+    position:absolute;
+  }
+  #signinview,
+  #signinwith{
+    visibility: visible;
+    position:absolute;
+  }
+  #signinmodal{
+    height:525px;
+  }
+  .socialdiv{
+    float:left;
+    margin-left:300px;
+    margin-right:20px;
+    padding:20px;
+  }
+  .viewdiv{
+    float:left;
+  }
+  #decorationline{
+    height:5px;
+    width:100%;
+    background-color:black;
+    margin-top:45px;
+    position:absolute;
+  }

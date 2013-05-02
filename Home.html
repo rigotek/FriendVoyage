@@ -52,7 +52,7 @@
     <div id="map_canvas"></div>
   </div>
 
-  <!-- selections, which enables user input-->
+<!-- selections, which enables user input-->
   <div id="selections" class="section-container" data-section="accordion">
 
     <section class="section active" id="step1">
@@ -69,6 +69,7 @@
         <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
 		<div class="joyride-tip-guide home">
         	<div class="joyride-content-wrapper">
+            	<a href="#close" class="joyride-close-tip">×</a>
     			<p>To get started, type in the places you'd like to visit</p>
             	<span class="joyride-nub left home"></span>
             </div>
@@ -91,6 +92,7 @@
       <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
 	  <div class="joyride-tip-guide home">
         	<div class="joyride-content-wrapper">
+            	<a href="#close" class="joyride-close-tip">×</a>
     			<p>Tell us the dates you're going here</p>
             	<span class="joyride-nub left home"></span>
             </div>
@@ -115,6 +117,7 @@
       <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
       <div class="joyride-tip-guide home">
         	<div class="joyride-content-wrapper">
+            	<a href="#close" class="joyride-close-tip">×</a>
     			 <p>Select all the activities you'd like to participate here</p>
             	<span class="joyride-nub left home"></span>
             </div>
@@ -132,6 +135,7 @@
       <!-- AP DIv Tooltip. New ".joyride-tip-guide.home" class in foundation.css to remove display:none -->
       <div class="joyride-tip-guide home">
         	<div class="joyride-content-wrapper">
+            	<a href="#close" class="joyride-close-tip">×</a>
     			 <p>Name your trip so you can reference it later</p>
             	<span class="joyride-nub left home"></span>
             </div>
@@ -139,6 +143,7 @@
     </div>    
   </section>
 </div>
+
 
   <div id="footer">
     <div id="blackline"></div>
@@ -198,7 +203,12 @@
     		<a class="close-reveal-modal">&#215;</a>
     	</div>
 
-
+      <!-- script to make the popup close-->
+      <script>
+	  $('.joyride-close-tip').click(function(){
+    		$('.joyride-tip-guide').css('display','none');
+	   });				
+      </script>
       <!-- scripts to make the popup guide work-->
       <script type="text/javascript">
       $(document).foundation('joyride', 'start');

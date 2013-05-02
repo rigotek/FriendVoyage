@@ -11,10 +11,6 @@
             networks: ['facebook','twitter','googleplus','linkedin','pinterest','tumblr','stumbleupon','email'],
             theme: 'square'
         });
-
-            if($.cookie('markers')){
-			document.getElementById('notify').style.visibility = 'visible';
-		}
     });
 
     //initializes picture opacity
@@ -235,6 +231,24 @@ var markerevent = function(marker){
 
         }
     }
+
+
+
+// DISPLAY IMAGE IF NEEDED
+
+
+         if($.cookie('lastCountedResults')){
+            if ($.cookie('lastCountedResults') < recomendationsCollector.length ){
+                      document.getElementById('notify').style.visibility = 'visible';
+                  }
+        }
+        else {
+            if(recomendationsCollector.length > 0){
+                      document.getElementById('notify').style.visibility = 'visible';
+            }
+        }
+    $.cookie('lastCountedResults', recomendationsCollector.length);
+
 //marker delete
 var deletemarker = function(marker, markerid){
     // marker.setMap(null);

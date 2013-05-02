@@ -206,6 +206,15 @@ var markerSelected = "";
               // });
           }
       }
+ if($.cookie('recomendations')){
+        // Read Recomendations
+        var savedRecommendations   = $.cookie('recomendations').split("||");
+        for (var i = 0; i < savedRecommendations.length; i++) {
+
+          recomendationsCollector.push(savedRecommendations[i]);
+
+        }
+    }
 
       //marker delete
       var deletemarker = function(marker, markerid){
@@ -245,15 +254,13 @@ var markerSelected = "";
   }
 
 function saveRecomendation(startOver){
-console.log("Saving Recomendation")
+  var recomendation  = new Array();
+  recomendation[0] =  ratingSelected;
+  recomendation[1] = categorySelected
+  recomendation[2] = markerSelected
+  recomendation[3] = $("#recommendationtext").val()
 
-var recomendation  = new Array();
-recomendation[0] =  ratingSelected;
-recomendation[1] = categorySelected
-recomendation[2] = markerSelected
-recomendation[3] = $("#recommendationtext").val()
-
-recomendationsCollector.push(recomendation.join("~~~"))
+  recomendationsCollector.push(recomendation.join("~~~"))
 
 $.cookie('recomendations', recomendationsCollector.join("||"));
 

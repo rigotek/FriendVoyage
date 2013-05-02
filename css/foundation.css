@@ -2966,7 +2966,16 @@ form.custom {
       top: 22px;
       left: -28px;
       right: auto;
-      bottom: none; } }
+      bottom: none; }
+    .joyride-tip-guide.home .joyride-nub.left.home {
+      border-color: black !important;
+      border-top-color: transparent !important;
+      border-left-color: transparent !important;
+      border-bottom-color: transparent !important;
+      top: 10px;
+      left: -28px;
+      right: auto;
+      bottom: none; }}
 /* Clearing Styles */
 [data-clearing] {
   *zoom: 1;

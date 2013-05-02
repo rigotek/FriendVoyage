@@ -66,6 +66,14 @@
             <a href="#" class="button prefix" id = "valuesubmit" onclick="addtolist(address.value)">Add</a>
           </div>
         </div>
+        <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
+		<div class="joyride-tip-guide home">
+        	<div class="joyride-content-wrapper">
+    			<p>To get started, type in the places you'd like to visit</p>
+            	<span class="joyride-nub left"></span>
+            </div>
+  		</div>
+  		
       <!--
         <div class="placeselected" id="addingcities">
           <ul class="side-nav">
@@ -74,13 +82,19 @@
         </div>
       -->
     </div>
-  </section>
-
+  </section>		
   <section class="section" id="step2">
     <p class="title" data-section-title><a href="#">When Are You Going?</a></p>
     <div class="content" data-section-content>
       <p>From: <input type="text" id="fromdatepicker" /></p>
       <p>To: <input type="text" id="todatepicker" /></p>
+      <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
+	  <div class="joyride-tip-guide home">
+        	<div class="joyride-content-wrapper">
+    			<p>Tell us the dates you're going here</p>
+            	<span class="joyride-nub left"></span>
+            </div>
+	  </div>
     </div>
   </section>
 
@@ -98,7 +112,13 @@
         <img class="pictureselect" src="img/shopping.png" title="shopping" id="shopping" onclick="selectimage('shopping')"/><p>Shopping</p>
         <img class="pictureselect" src="img/sights.png" title="sights" id="sights" onclick="selectimage('sights')"/><p>Sights</p>
       </form>
-
+      <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.home" css in foundation to remove display:none -->
+      <div class="joyride-tip-guide home">
+        	<div class="joyride-content-wrapper">
+    			 <p>Select all the activities you'd like to participate here</p>
+            	<span class="joyride-nub left"></span>
+            </div>
+	  </div>
     </div>
   </section>
 
@@ -109,14 +129,22 @@
         <input type="text" id="tripname" placeholder="Name Your Trip">
       </form>
       <a href="#" class="button" id="submitselectionbutton" onclick="saveToCookiesAndOpenModal('#signinmodal')">Submit Trip</a>
-    </div>
+      <!-- AP DIv Tooltip. New ".joyride-tip-guide.home" class in foundation.css to remove display:none -->
+      <div class="joyride-tip-guide home">
+        	<div class="joyride-content-wrapper">
+    			 <p>Name your trip so you can reference it later</p>
+            	<span class="joyride-nub left"></span>
+            </div>
+	  </div>
+    </div>    
   </section>
 </div>
 
   <div id="footer">
     <div id="blackline"></div>
   </div>
-
+  
+<!-- this is the original joyride that uses jquery
 <ol class="joyride-list" data-joyride>
   <li data-id="step1" data-text="Next" data-options="tipLocation:left">
     <p>To get started, type in the places you'd like to visit</p>
@@ -131,6 +159,7 @@
     <p>Name your trip so you can reference it later</p>
   </li>
 </ol>
+-->
 
 <!--variety os scripts to get the map to work, as well as foundation's infrastructure-->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>

@@ -1,4 +1,7 @@
-    //initializes the datepicker
+
+  var recomendationsCollector  = new Array();
+
+   //initializes the datepicker
     $('#fromdatepicker').datepicker();
     $('#todatepicker').datepicker();
 
@@ -8,7 +11,7 @@
             networks: ['facebook','twitter','googleplus','linkedin','pinterest','tumblr','stumbleupon','email'],
             theme: 'square'
         });
-        
+
             if($.cookie('markers')){
 			document.getElementById('notify').style.visibility = 'visible';
 		}
@@ -183,6 +186,55 @@ var markerevent = function(marker){
               // });
           }
       }
+
+
+  // READ RECOMENDATIONS FROM COOKIES
+   if($.cookie('recomendations')){
+        // Read Recomendations
+        var savedRecommendations   = $.cookie('recomendations').split("||");
+        for (var i = 0; i < savedRecommendations.length; i++) {
+
+          var recomendation  = savedRecommendations[i].split("~~~");
+
+          // ADD to map
+           var latandleg =recomendation[2].split("_");
+
+                // GET LAT AND LNG
+                var lat = latandleg[0];
+                var lng = latandleg[1];
+
+                var markerid = markeridcreator(lat, lng);
+
+                var marker = new google.maps.Marker({
+                  position: getlatlng(lat, lng), //gets lat and long
+                  map: map, //puts the map with the variable
+                  id: 'marker_' + markerid,
+                   icon: 'img/'+recomendation[1]+'.png'
+                });
+
+                //adds marker to the array
+                markers[markerid] = marker;
+
+                //adds marker to event trigger
+                markerevent(marker);
+
+                //allows for the info window to pop up
+                var geocoder = new google.maps.Geocoder();
+                var infowindow = new google.maps.InfoWindow();
+                var latlng = getlatlng(lat, lng);
+                 geocoder.geocode({'latLng': latlng}, function(results) {
+              var str = recomendation[3]; //adds description to popup info window
+           infowindow.setContent(results[1].formatted_address + '<br>' + str);
+         });
+          //API which allows for the clicking to bind to the infowindow action
+          google.maps.event.addListener(marker, 'click', function(){
+            infowindow.open(map,marker);
+          });
+
+          recomendationsCollector.push(recomendation.join("~~~"));
+
+        }
+    }
 //marker delete
 var deletemarker = function(marker, markerid){
     // marker.setMap(null);

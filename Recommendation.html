@@ -139,7 +139,7 @@
                   <p>Select an icon that best represents what you're recommending</p>
                   <span class="joyride-nub left noride"></span>
               </div>
-          </div>               
+          </div>
         </div>
       </section>
 
@@ -184,9 +184,9 @@
                   <p>Why should your friend visit this place?</p>
                   <span class="joyride-nub left noride"></span>
               </div>
-          </div>             
           </div>
-          
+          </div>
+
         </div>
       </section>
 
@@ -206,7 +206,7 @@
                   <p>Find it using the textbox</p>
                   <span class="joyride-nub left noride"></span>
               </div>
-          </div>      
+          </div>
         </div>
       </section>
 
@@ -216,8 +216,8 @@
         </p>
         <div class="content" data-section-content>
           <div class="row">
-            <input type="submit" class="button small-5 columns"  id="address" onclick="startoveraccordion()" value="Add More" />
-            <input type="submit" class="button small-5 columns"  id="address" value="I'm Done" />
+            <input type="submit" class="button small-5 columns"  id="address" onclick="saveRecomendation(true)" value="Add More" />
+            <input type="submit" class="button small-5 columns"  id="address"  onclick="saveRecomendation(false)" value="I'm Done" />
           </div>
           <!-- AP DIv Tooltip. Uses new ".joyride-tip-guide.noride" css in foundation to remove display:none -->
           <div class="joyride-tip-guide noride">
@@ -226,7 +226,7 @@
                   <p>Wanna keep going? Hit yes, if you're done, hit complete</p>
                   <span class="joyride-nub left noride"></span>
               </div>
-          </div>     
+          </div>
         </div>
       </section>
 
@@ -286,17 +286,10 @@
       <script>
 	  $('.joyride-close-tip').click(function(){
     		$('.joyride-tip-guide').css('display','none');
-	   });				
+	   });
       </script>
 
-<!-- script to store the recommendation-->
-  <script type="text/javascript">
-	$('#selections').submit(function() {
-  console.log($(this).serializeArray());
-  return false;
-});
 
-</script>
 
 
   <div id="linkmodal" class="reveal-modal">

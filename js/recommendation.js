@@ -1,4 +1,11 @@
-    //initializes sharing on facebook
+    // Array to hold lcoations
+  var recomendationsCollector  = new Array();
+
+var categorySelected = "";
+var ratingSelected = "";
+var markerSelected = "";
+
+//initializes sharing on facebook
     $(document).ready(function(){
       $('#socialnetworks').share({
         networks: ['facebook','twitter','googleplus','linkedin','pinterest','tumblr','stumbleupon','email'],
@@ -88,6 +95,8 @@
         imageicon='img/'+checked.val()+'.png';
         $(this).parent('div.pictures').find('label').css('opacity', '.25');
         $(this).find('label').css('opacity', '1');
+
+        categorySelected = checked.val();
       });
 
       //this is an icon selector for the drop pins
@@ -96,6 +105,8 @@
         var checked=$(this).find('input:radio').attr('checked', true);
         $(this).parent('div#givegrade').find('label').css('opacity', '.25');
         $(this).find('label').css('opacity', '1');
+
+        ratingSelected = checked.val();
       });
 
       //this loads the map onto the screen
@@ -126,6 +137,7 @@
           icon: imageicon //grabs it from the checking function
         });
 
+        markerSelected = markerid;
         //adds marker to the array
         markers[markerid] = marker;
 
@@ -194,6 +206,7 @@
               // });
           }
       }
+
       //marker delete
       var deletemarker = function(marker, markerid){
         // marker.setMap(null);
@@ -230,3 +243,22 @@
     $('#step1').addClass('active');
     //$(this).addClass('showhidenew');
   }
+
+function saveRecomendation(startOver){
+console.log("Saving Recomendation")
+
+var recomendation  = new Array();
+recomendation[0] =  ratingSelected;
+recomendation[1] = categorySelected
+recomendation[2] = markerSelected
+recomendation[3] = $("#recommendationtext").val()
+
+recomendationsCollector.push(recomendation.join("~~~"))
+
+$.cookie('recomendations', recomendationsCollector.join("||"));
+
+  if (startOver){
+    startoveraccordion();
+  }
+
+}

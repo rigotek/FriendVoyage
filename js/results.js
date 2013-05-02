@@ -1,4 +1,3 @@
-
     //initializes the datepicker
     $('#fromdatepicker').datepicker();
     $('#todatepicker').datepicker();
@@ -9,6 +8,10 @@
             networks: ['facebook','twitter','googleplus','linkedin','pinterest','tumblr','stumbleupon','email'],
             theme: 'square'
         });
+        
+            if($.cookie('markers')){
+			document.getElementById('notify').style.visibility = 'visible';
+		}
     });
 
     //initializes picture opacity
